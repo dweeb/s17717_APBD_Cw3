@@ -86,9 +86,15 @@ C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAna
 C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\piotr\source\repos\Cw3\Cw3\obj\Debug\netcoreapp3.1\Cw3.csproj.CoreCompileInputs.cache
-C:\Users\piotr\source\repos\Cw3\Cw3\obj\Debug\netcoreapp3.1\Cw3.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\piotr\source\repos\Cw3\Cw3\obj\Debug\netcoreapp3.1\Cw3.csproj.CopyComplete
 C:\Users\piotr\source\repos\Cw3\Cw3\obj\Debug\netcoreapp3.1\Cw3.dll
 C:\Users\piotr\source\repos\Cw3\Cw3\obj\Debug\netcoreapp3.1\Cw3.pdb
 C:\Users\piotr\source\repos\Cw3\Cw3\obj\Debug\netcoreapp3.1\Cw3.genruntimeconfig.cache
+C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\piotr\source\repos\Cw3\Cw3\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\piotr\source\repos\Cw3\Cw3\obj\Debug\netcoreapp3.1\Cw3.csproj.CoreCompileInputs.cache
+C:\Users\piotr\source\repos\Cw3\Cw3\obj\Debug\netcoreapp3.1\Cw3.MvcApplicationPartsAssemblyInfo.cache
