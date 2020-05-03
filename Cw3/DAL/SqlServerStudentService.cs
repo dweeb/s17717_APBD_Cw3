@@ -1,19 +1,20 @@
 ﻿using Cw3.Models;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cw3.DAL
 {
-    public class SqlServerService : IDbService
+    public class SqlServerStudentService : IDbStudentService
     {
-        // Student
-        public Enrollment GetEnrollment(string id)
+        private readonly string connectionString;
+        public SqlServerStudentService()
         {
-            using (var connection = new SqlConnection("Data Source=db-mssql;Initial Catalog=s17717;Integrated Security=True"))
+            connectionString = "Data Source=db-mssql;Initial Catalog=s17717;Integrated Security=True";
+        }
+        // Student
+        public Enrollment GetStudentEnrollment(string id)
+        {
+            using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 command.Connection = connection;
@@ -38,7 +39,7 @@ namespace Cw3.DAL
 
         public Student GetStudent(string id)
         {
-            using (var connection = new SqlConnection("Data Source=db-mssql;Initial Catalog=s17717;Integrated Security=True"))
+            using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 command.Connection = connection;
@@ -61,7 +62,7 @@ namespace Cw3.DAL
 
         public List<Student> GetStudents()
         {
-            using (var connection = new SqlConnection("Data Source=db-mssql;Initial Catalog=s17717;Integrated Security=True"))
+            using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 command.Connection = connection;

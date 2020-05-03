@@ -14,8 +14,8 @@ namespace Cw3.Controllers
     [Route("api/students")]
     public class StudentsController : ControllerBase
     {
-        private readonly IDbService _dbservice;
-        public StudentsController(IDbService dbService)
+        private readonly IDbStudentService _dbservice;
+        public StudentsController(IDbStudentService dbService)
         {
             _dbservice = dbService;
         }
@@ -30,9 +30,9 @@ namespace Cw3.Controllers
             return Ok(_dbservice.GetStudents());
         }
         [HttpGet("{id}/enrollment")]
-        public IActionResult GetEnrollment(string id)
+        public IActionResult GetStudentEnrollment(string id)
         {
-            return Ok(_dbservice.GetEnrollment(id));
+            return Ok(_dbservice.GetStudentEnrollment(id));
         }
         [HttpPost]
         public IActionResult CreateStudent(Student student)

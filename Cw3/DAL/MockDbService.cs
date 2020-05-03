@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cw3.DAL
 {
-    public class MockDbService : IDbService
+    public class MockDbService : IDbStudentService
     {
         private static IEnumerable<Student> _students;
         static MockDbService()
@@ -30,12 +30,17 @@ namespace Cw3.DAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Student> GetStudents()
+        public Enrollment GetStudentEnrollment(string id)
         {
-            return _students;
+            throw new NotImplementedException();
         }
 
-        IActionResult IDbService.GetStudents()
+        Student IDbStudentService.GetStudent(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Student> IDbStudentService.GetStudents()
         {
             throw new NotImplementedException();
         }
