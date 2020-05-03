@@ -1,4 +1,5 @@
 ﻿using Cw3.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,25 @@ namespace Cw3.DAL
                 new Student {IdStudent = 3, FirstName = "Janusz", LastName = "Jankowski"}
             };
         }
+
+        public IActionResult GetEnrollment(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult GetStudent(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Student> GetStudents()
         {
             return _students;
+        }
+
+        IActionResult IDbService.GetStudents()
+        {
+            throw new NotImplementedException();
         }
     }
 }
