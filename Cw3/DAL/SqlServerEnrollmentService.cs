@@ -24,5 +24,10 @@ namespace Cw3.DAL
         {
             throw new NotImplementedException();
         }
+
+        public PromotionResponse PromoteStudents(PromotionRequest req)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

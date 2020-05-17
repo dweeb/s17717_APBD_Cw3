@@ -36,5 +36,12 @@ namespace Cw3.Controllers
             if (e == null) return NotFound();
             return Ok(e);
         }
+        [HttpPost("promotions")]
+        public IActionResult PromoteStudents(PromotionRequest req)
+        {
+            var res = _dbservice.PromoteStudents(req);
+            if (res.enrollment == null) return NotFound();
+            return Created("api/enrollments/" + res.enrollment.IdEnrollment, res);
+        }
     }
 }

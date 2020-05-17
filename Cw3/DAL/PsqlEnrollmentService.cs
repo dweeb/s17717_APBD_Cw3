@@ -119,5 +119,47 @@ namespace Cw3.DAL
                 return enrollment;
             }
         }
+
+        public PromotionResponse PromoteStudents(PromotionRequest req)
+        {
+            using (var connection = new NpgsqlConnection(connectionString))
+            using (var command = new NpgsqlCommand())
+            {
+                command.Connection = connection;
+                connection.Open();
+                var transaction = connection.BeginTransaction();
+                try
+                {
+                    command.CommandText = "call promote (@stud, @sem)";
+                    command.Parameters.AddWithValue("stud", req.Studies);
+                    command.Parameters.AddWithValue("sem", req.Semester);
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+                    // I've yet to find out how to make postgres functions return query results. It's really designed to do everything but that
+                    command.CommandText = "select * from enrollment where idStudy = (select idStudy from studies where name = @stud) and semester = @sem;";
+                    command.Parameters.AddWithValue("stud", req.Studies);
+                    command.Parameters.AddWithValue("sem", req.Semester + 1);
+                    var reader = command.ExecuteReader();
+                    if (!reader.Read()) return new PromotionResponse();
+                    Enrollment enrollment = new Enrollment();
+                    enrollment.IdEnrollment = (int)reader["idEnrollment"];
+                    enrollment.Semester = (int)reader["semester"];
+                    enrollment.IdStudy = (int)reader["idStudy"];
+                    enrollment.StartDate = reader["startDate"].ToString();
+                    var res = new PromotionResponse();
+                    res.enrollment = enrollment;
+                    res.responseText = "Students promoted";
+                    return res;
+                }
+                catch (NpgsqlException e)
+                {
+                    transaction.Rollback();
+                    var res = new PromotionResponse();
+                    res.responseText = e.ToString();
+                    res.enrollment = null;
+                    return null;
+                }
+             }
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace Cw3.DAL
     {
         public EnrollStudentResponse EnrollStudent(EnrollStudentRequest req);
         public Enrollment GetEnrollment(int id);
+        public PromotionResponse PromoteStudents(PromotionRequest req);
     }
 }
