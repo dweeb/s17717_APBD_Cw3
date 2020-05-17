@@ -18,7 +18,13 @@ namespace Cw3.DTOs.Requests
 
         [Required]
         public DateTime Birthdate { get; set; }
-
+        // right now only accepts dates in the format "1999-03-30T00:00:00"
+        /*
+        public void SetBirthDate(String date)
+        {
+            Birthdate = DateTime.Parse(date);
+        }
+        */
         [Required]
         public string Studies { get; set; }
     }

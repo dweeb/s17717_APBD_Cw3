@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\piotr\\source\\repos\\Cw3\\Cw3\\Cw3.csproj": {}
+    "F:\\APBD\\s17717_APBD_Cw3\\Cw3\\Cw3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\piotr\\source\\repos\\Cw3\\Cw3\\Cw3.csproj": {
+    "F:\\APBD\\s17717_APBD_Cw3\\Cw3\\Cw3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\piotr\\source\\repos\\Cw3\\Cw3\\Cw3.csproj",
+        "projectUniqueName": "F:\\APBD\\s17717_APBD_Cw3\\Cw3\\Cw3.csproj",
         "projectName": "Cw3",
-        "projectPath": "C:\\Users\\piotr\\source\\repos\\Cw3\\Cw3\\Cw3.csproj",
+        "projectPath": "F:\\APBD\\s17717_APBD_Cw3\\Cw3\\Cw3.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\piotr\\source\\repos\\Cw3\\Cw3\\obj\\",
+        "outputPath": "F:\\APBD\\s17717_APBD_Cw3\\Cw3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\piotr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,6 +41,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[3.1.3, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

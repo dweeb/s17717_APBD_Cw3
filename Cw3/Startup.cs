@@ -27,8 +27,10 @@ namespace Cw3
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddSingleton<IDbStudentService, SqlServerStudentService>();
-            services.AddTransient<IDbStudentService, SqlServerStudentService>();
-            services.AddTransient<IDbEnrollmentService, SqlServerEnrollmentService>();
+            //services.AddTransient<IDbStudentService, SqlServerStudentService>();
+            //services.AddTransient<IDbEnrollmentService, SqlServerEnrollmentService>();
+            services.AddTransient<IDbStudentService, PsqlStudentService>();
+            services.AddTransient<IDbEnrollmentService, PsqlEnrollmentService>();
             services.AddControllers();
         }
 

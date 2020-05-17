@@ -21,6 +21,8 @@ namespace Cw3.Controllers
         [HttpPost]
         public IActionResult EnrollStudent(EnrollStudentRequest req)
         {
+            Console.WriteLine(req.FirstName);
+            Console.WriteLine(req.Birthdate);
             return Ok();
         }
     }
