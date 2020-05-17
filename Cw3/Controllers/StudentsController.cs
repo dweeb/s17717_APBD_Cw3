@@ -22,7 +22,9 @@ namespace Cw3.Controllers
         [HttpGet("{id}")]
         public IActionResult GetStudent(string id)
         {
-            return Ok(_dbservice.GetStudent(id));
+            Student s = _dbservice.GetStudent(id);
+            if (s == null) return NotFound();
+            return Ok(s);
         }
         [HttpGet]
         public IActionResult GetStudents()

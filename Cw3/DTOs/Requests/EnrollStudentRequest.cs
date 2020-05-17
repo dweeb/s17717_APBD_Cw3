@@ -17,14 +17,8 @@ namespace Cw3.DTOs.Requests
         public string LastName { get; set; }
 
         [Required]
-        public DateTime Birthdate { get; set; }
-        // right now only accepts dates in the format "1999-03-30T00:00:00"
-        /*
-        public void SetBirthDate(String date)
-        {
-            Birthdate = DateTime.Parse(date);
-        }
-        */
+        public String Birthdate { get; set; }
+        // using string is much better than DateTime since postgres is really robust when it comes to date formats
         [Required]
         public string Studies { get; set; }
     }

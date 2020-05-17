@@ -51,7 +51,7 @@ namespace Cw3.DAL
                 command.Parameters.AddWithValue("id", id);
                 connection.Open();
                 var reader = command.ExecuteReader();
-                reader.Read();
+                if(!reader.Read()) return null;
                 var s = new Student();
                 s.FirstName = reader["FirstName"].ToString();
                 s.LastName = reader["LastName"].ToString();
@@ -68,7 +68,7 @@ namespace Cw3.DAL
             using (var command = new NpgsqlCommand())
             {
                 command.Connection = connection;
-                command.CommandText = "select s.FirstName, s.LastName, s.BirthDate, u.Name, e.Semester from Student as s " +
+                command.CommandText = "select s.IndexNumber, s.FirstName, s.LastName, s.BirthDate, u.Name, e.Semester from Student as s " +
                         "join Enrollment e on s.IdEnrollment = e.IdEnrollment join Studies u on e.IdStudy = u.IdStudy;";
                 connection.Open();
                 var reader = command.ExecuteReader();
@@ -76,6 +76,7 @@ namespace Cw3.DAL
                 while (reader.Read())
                 {
                     var s = new Student();
+                    s.IndexNumber = reader["indexnumber"].ToString();
                     s.FirstName = reader["FirstName"].ToString();
                     s.LastName = reader["LastName"].ToString();
                     s.BirthDate = reader["BirthDate"].ToString();
