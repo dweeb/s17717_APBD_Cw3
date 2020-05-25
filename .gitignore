@@ -343,3 +343,7 @@ healthchecksdb
 
 # auth stuff
 *.cstr
+
+# logfiles
+logfile.*
+*.log
