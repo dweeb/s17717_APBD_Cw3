@@ -7,6 +7,10 @@ using Cw3.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
+using Cw3.DTOs.Requests;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace Cw3.Controllers
 {
@@ -51,6 +55,29 @@ namespace Cw3.Controllers
         public IActionResult DeleteStudent(int id)
         {
             return Ok("Usuwanie ukonczone");
+        }
+        [HttpPost("{id}/password")]
+        [Authorize(Roles = "employee")]
+        public IActionResult ChangePassword(ChangePasswordRequest req)
+        {
+            if (_dbservice.GetStudent(req.index) == null)
+                return NotFound("Student with this index doesn't exist.");
+            byte[] salt = new byte[128 / 8];
+            using(var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+            string hashedPw = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: req.password,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA1,
+                iterationCount: 1000,       //  eyeballin' it
+                numBytesRequested: 256 / 8
+            ));
+            string saltString = Convert.ToBase64String(salt);
+            if (_dbservice.SetStudentPassword(req.index, req.password, saltString))
+                return Ok();
+            return BadRequest();
         }
     }
 }

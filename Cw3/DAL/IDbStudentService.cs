@@ -8,5 +8,6 @@ namespace Cw3.DAL
         public List<Student> GetStudents();
         public Student GetStudent(string id);
         public Enrollment GetStudentEnrollment(string id);
+        public bool SetStudentPassword(string id, string password, string salt);
     }
 }

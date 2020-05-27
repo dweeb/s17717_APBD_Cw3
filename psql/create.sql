@@ -45,3 +45,8 @@ values (nextval('idEnrollSeq'), 1, 1, '2019-10-01');
 insert into student (indexNumber, firstName, lastName, birthDate, idEnrollment)
 values ('s12345', 'Janusz', 'Tracz', '1990-12-13', 
 	   (select idENrollment from enrollment as e where e.startDate = '2019-10-01' and e.idStudy = 1));
+
+-- auth related edit
+ALTER TABLE Student ADD Password varchar(256);
+ALTER TABLE Student ADD Role varchar(16);
+ALTER TABLE Student ADD Salt varchar(256);

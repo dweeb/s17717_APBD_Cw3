@@ -87,5 +87,24 @@ namespace Cw3.DAL
                 return returnList;
             }
         }
+
+        public bool SetStudentPassword(string id, string password, string salt)
+        {
+            using (var connection = new NpgsqlConnection(connectionString))
+            using (var command = new NpgsqlCommand())
+            {
+                command.Connection = connection;
+                command.CommandText = "update student " +
+                    "set password = @pass, salt = @salt " +
+                    "where index = @index;";
+                command.Parameters.AddWithValue("pass", password);
+                command.Parameters.AddWithValue("salt", salt);
+                command.Parameters.AddWithValue("index", id);
+                connection.Open();
+                if (command.ExecuteNonQuery() > 0)
+                    return true;
+                return false;
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Cw3.DAL;
 using Cw3.DTOs.Requests;
 using Cw3.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace Cw3.Controllers
 {
     [ApiController]
     [Route("api/enrollments")]
+    [Authorize(Roles = "employee")]
     public class EnrollmentsController : ControllerBase
     {
         private readonly IDbEnrollmentService _dbservice;

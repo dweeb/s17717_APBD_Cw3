@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Cw3.DAL;
+using Cw3.Handlers;
 using Cw3.Middleware;
 using Cw3.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Cw3
 {
@@ -29,11 +34,23 @@ namespace Cw3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddSingleton<IDbStudentService, SqlServerStudentService>();
-            //services.AddTransient<IDbStudentService, SqlServerStudentService>();
-            //services.AddTransient<IDbEnrollmentService, SqlServerEnrollmentService>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = "Gakko",
+                        ValidAudience = "Students",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecretKey"]))
+                    };
+                });
+            // services.AddAuthentication("AuthenticationBasic").AddScheme<AuthenticationSchemeOptions, BasicAuthHandler>("AuthenticationBasic", null);
             services.AddTransient<IDbStudentService, PsqlStudentService>();
             services.AddTransient<IDbEnrollmentService, PsqlEnrollmentService>();
+            services.AddTransient<IDbAuthService, PsqlAuthService>();
             services.AddControllers();
         }
 
@@ -44,6 +61,7 @@ namespace Cw3
             {
                 app.UseDeveloperExceptionPage();
             }
+            /*      auth implemented, no longer needed
             app.Use(async (context, next) =>
             {
                 if (!context.Request.Headers.ContainsKey("index"))
@@ -61,8 +79,10 @@ namespace Cw3
                 }
                 await next();
             });
+            */
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
